@@ -8,6 +8,7 @@ import com.kadiraksoy.JavaElasticsearch.dto.SearchRequestDto;
 import com.kadiraksoy.JavaElasticsearch.model.Item;
 import com.kadiraksoy.JavaElasticsearch.repository.ItemRepository;
 import com.kadiraksoy.JavaElasticsearch.util.ESUtil;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -18,19 +19,14 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class ItemService {
 
     private final ItemRepository itemRepository;
     private final JsonDataService jsonDataService;
     private final ElasticsearchClient elasticsearchClient;
 
-    public ItemService(ItemRepository itemRepository,
-                       JsonDataService jsonDataService,
-                       ElasticsearchClient elasticsearchClient) {
-        this.itemRepository = itemRepository;
-        this.jsonDataService = jsonDataService;
-        this.elasticsearchClient = elasticsearchClient;
-    }
+
 
     public Item createIndex(Item item) {
         return itemRepository.save(item);

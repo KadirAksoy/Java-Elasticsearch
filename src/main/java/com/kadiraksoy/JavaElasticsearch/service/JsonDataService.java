@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kadiraksoy.JavaElasticsearch.model.Item;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +12,12 @@ import java.io.InputStream;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class JsonDataService {
 
     private final ObjectMapper objectMapper;
 
-    public JsonDataService(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
-    }
+
 
     public List<Item> readItemFromJson(){
         try {
