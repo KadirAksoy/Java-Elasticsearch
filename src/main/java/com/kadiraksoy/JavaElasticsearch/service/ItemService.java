@@ -5,8 +5,10 @@ import co.elastic.clients.elasticsearch._types.query_dsl.Query;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import com.kadiraksoy.JavaElasticsearch.dto.SearchRequestDto;
 import com.kadiraksoy.JavaElasticsearch.model.Item;
 import com.kadiraksoy.JavaElasticsearch.repository.ItemRepository;
+import com.kadiraksoy.JavaElasticsearch.util.ESUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
