@@ -1,7 +1,9 @@
 package com.kadiraksoy.JavaElasticsearch.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.asm.TypeReference;
+import com.kadiraksoy.JavaElasticsearch.model.Item;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +24,13 @@ public class JsonDataService {
             ClassPathResource resource = new ClassPathResource("data/item.json");
             InputStream inputStream = resource.getInputStream();
 
-            return objectMapper.readValue(inputStream,new TypeReference(List<Item>));
+            return objectMapper.readValue(inputStream, new TypeReference<List<Item>>(){
+            });
 
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        return null;
     }
 
 }
