@@ -10,7 +10,7 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 
 @Configuration
 @EnableElasticsearchRepositories(basePackageClasses = "com.kadiraksoy.JavaElasticsearch.repository")
-@ComponentScan(basePackageClasses = "com.kadiraksoy.JavaElasticsearch")
+@ComponentScan(basePackageClasses = {"com.kadiraksoy.JavaElasticsearch"})
 public class ESConfig extends ElasticsearchConfiguration {
 
     @Value("${elasticsearch.url}")
