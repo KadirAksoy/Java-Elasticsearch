@@ -5,6 +5,7 @@ import co.elastic.clients.elasticsearch._types.query_dsl.MatchAllQuery;
 import co.elastic.clients.elasticsearch._types.query_dsl.MatchQuery;
 import co.elastic.clients.elasticsearch._types.query_dsl.Query;
 import co.elastic.clients.elasticsearch._types.query_dsl.TermQuery;
+import com.kadiraksoy.JavaElasticsearch.dto.SearchRequestDto;
 import lombok.experimental.UtilityClass;
 
 import java.util.function.Supplier;

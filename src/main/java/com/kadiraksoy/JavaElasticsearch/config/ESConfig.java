@@ -9,8 +9,8 @@ import org.springframework.data.elasticsearch.client.elc.ElasticsearchConfigurat
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 @Configuration
-@EnableElasticsearchRepositories(basePackageClasses = "com.kadiraksoy.JavaElasticsearch.repository")
-@ComponentScan(basePackageClasses = {"com.kadiraksoy.JavaElasticsearch"})
+@EnableElasticsearchRepositories(basePackages = "com.kadiraksoy.JavaElasticsearch.repository")
+@ComponentScan(basePackages = {"com.kadiraksoy.JavaElasticsearch"})
 public class ESConfig extends ElasticsearchConfiguration {
 
     @Value("${elasticsearch.url}")

@@ -4,7 +4,6 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.query_dsl.Query;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import com.kadiraksoy.JavaElasticsearch.dto.SearchRequestDto;
 import com.kadiraksoy.JavaElasticsearch.model.Item;
 import com.kadiraksoy.JavaElasticsearch.repository.ItemRepository;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Service
