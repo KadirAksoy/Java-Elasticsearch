@@ -17,16 +17,12 @@ public class JsonDataService {
 
     private final ObjectMapper objectMapper;
 
-
-
     public List<Item> readItemFromJson(){
         try {
             ClassPathResource resource = new ClassPathResource("data/item.json");
             InputStream inputStream = resource.getInputStream();
-
             return objectMapper.readValue(inputStream, new TypeReference<List<Item>>(){
             });
-
         }catch (Exception e){
             e.printStackTrace();
         }

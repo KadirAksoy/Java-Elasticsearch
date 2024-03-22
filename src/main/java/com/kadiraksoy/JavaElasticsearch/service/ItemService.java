@@ -73,6 +73,10 @@ public class ItemService {
         }
     }
 
+//    {
+//        "fieldName": ["name"],
+//        "searchValue": ["Ne aramak istiyorsak"]
+//    }
     public List<Item> searchItemsByFieldAndValue(SearchRequestDto searchRequestDto) {
         SearchResponse<Item> response = null;
         try {
