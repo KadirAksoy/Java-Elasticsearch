@@ -8,7 +8,6 @@ import com.kadiraksoy.JavaElasticsearch.dto.SearchRequestDto;
 import com.kadiraksoy.JavaElasticsearch.model.Item;
 import com.kadiraksoy.JavaElasticsearch.repository.ItemRepository;
 import com.kadiraksoy.JavaElasticsearch.util.ESUtil;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +18,19 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
 public class ItemService {
 
     private final ItemRepository itemRepository;
     private final JsonDataService jsonDataService;
     private final ElasticsearchClient elasticsearchClient;
 
+    public ItemService(ItemRepository itemRepository,
+                       JsonDataService jsonDataService,
+                       ElasticsearchClient elasticsearchClient) {
+        this.itemRepository = itemRepository;
+        this.jsonDataService = jsonDataService;
+        this.elasticsearchClient = elasticsearchClient;
+    }
 
 
     public Item createIndex(Item item) {
@@ -85,7 +90,7 @@ public class ItemService {
 
             log.info("Elasticsearch query {}", querySupplier.toString());
 
-            response = elasticsearchClient.search(q -> q.index("items_index")
+            response = elasticsearchClient.search(q -> q.index("item_index")
                     .query(querySupplier.get()), Item.class);//sorguyu calistir ve cevabi alir
 
             log.info("Elasticsearch response: {}", response.toString());
@@ -105,7 +110,7 @@ public class ItemService {
             log.info("Elasticsearch query: " + supplier.get().toString());
 
             SearchResponse<Item> response = elasticsearchClient.search(q ->
-                    q.index("items_index").query(supplier.get()), Item.class);
+                    q.index("item_index").query(supplier.get()), Item.class);
             log.info("Elasticsearch response: {}", response.toString());
 
             return extractItemsFromResponse(response);
@@ -119,7 +124,7 @@ public class ItemService {
         log.info("Elasticsearch query: {}", autoSuggestQuery.toString());
 
         try {
-            return elasticsearchClient.search(q -> q.index("items_index").query(autoSuggestQuery), Item.class)
+            return elasticsearchClient.search(q -> q.index("item_index").query(autoSuggestQuery), Item.class)
                     .hits()
                     .hits()
                     .stream()

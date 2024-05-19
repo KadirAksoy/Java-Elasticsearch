@@ -12,10 +12,41 @@ services:
     volumes:
       - $HOME/app:/var/app
     networks:
-      - my-network
+      - elk
     ports:
       - "9200:9200"
       - "9300:9300"
 
+#  kibana:
+#    container_name: library_kibana
+#    image: docker.elastic.co/kibana/kibana:7.15.2
+#    ports:
+#      - "5601:5601"
+#    networks:
+#      - elk
+#    depends_on:
+#      - elasticsearch
+#
+#  logstash:
+#    container_name: library_logstash
+#    image: docker.elastic.co/logstash/logstash:7.15.2
+#    volumes:
+#      - type: bind
+#        source: .logstash
+#        target: /usr/share/logstash/pipeline
+#        read_only: true
+#    ports:
+#      - "5044:5044"
+#      - "5000:5000/tcp"
+#      - "5000:5000/udp"
+#      - "9600:9600"
+#      - "4560:4560"
+#    environment:
+#      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+#    networks:
+#      - elk
+#    depends_on:
+#      - elasticsearch
+
 networks:
-  my-network:
+  elk:

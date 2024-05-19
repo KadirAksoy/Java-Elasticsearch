@@ -12,7 +12,7 @@ import org.springframework.data.elasticsearch.annotations.Setting;
 @Document(indexName = "item_index")
 @Getter
 @Setter
-@Setting(settingPath = "static/es-settings.json")//Kuralları belirtiyoruz denebilir
+@Setting(settingPath = "static/es-setting.json")//Kuralları belirtiyoruz denebilir
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Item {
 

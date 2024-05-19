@@ -3,7 +3,6 @@ package com.kadiraksoy.JavaElasticsearch.controller;
 import com.kadiraksoy.JavaElasticsearch.dto.SearchRequestDto;
 import com.kadiraksoy.JavaElasticsearch.model.Item;
 import com.kadiraksoy.JavaElasticsearch.service.ItemService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,10 +10,13 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/items")
-@RequiredArgsConstructor
 public class ItemController {
 
     private final ItemService itemService;
+
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
+    }
 
     @PostMapping()
     public Item createIndex(@RequestBody Item item) {
